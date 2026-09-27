@@ -15,3 +15,10 @@ Run the application interactively in a shell:
 ```bash
 docker run -v "$(pwd)":/usr/src -it cpp-container sh
 ```
+
+## Structure
+
+* `.agents` - AI agent configurations and skills (in `/skills` subdirectory) for this project
+* `.` - The root directory contains the C++ code for the application as well as necessary scripts
+* `specs` - Specification documentation
+* `tests` - Test code
