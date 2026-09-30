@@ -1,24 +1,35 @@
-# cpp-container-template
+# Console Hangman
 
-## Getting Started
+A dependency-free C++17 terminal version of Hangman. Guess the letters in a hidden word before making six distinct incorrect guesses.
 
-This repository is compatible with [cpp-container](https://github.com/ChicoState/cpp-container). If not already built on your machine, clone and build it.
-
-Run the container:
+## Build and Play
 
 ```bash
-docker run -v "$(pwd)":/usr/src -it cpp-container
+mkdir -p build
+g++ -std=c++17 -Wall -Wextra -Werror main.cpp hangman_game.cpp -o build/hangman
+./build/hangman
 ```
 
-Run the application interactively in a shell:
+Enter one letter per turn. Guesses are case-insensitive; invalid and repeated guesses do not reduce the remaining-guess count. After each round, answer `yes` or `no` to play again or exit.
+
+If input ends unexpectedly, the game exits cleanly with a short message.
+
+## Test
+
+Run the complete non-interactive test suite:
+
+```bash
+bash test_runner.sh
+```
+
+It builds the application and unit tests in `build/`, then runs deterministic console end-to-end tests. Generated files remain in ignored build or temporary directories.
+
+## Container
+
+This repository is compatible with [cpp-container](https://github.com/ChicoState/cpp-container). To open a shell in the container:
 
 ```bash
 docker run -v "$(pwd)":/usr/src -it cpp-container sh
 ```
 
-## Structure
-
-* `.agents` - AI agent configurations and skills (in `/skills` subdirectory) for this project
-* `.` - The root directory contains the C++ code for the application as well as necessary scripts
-* `specs` - Specification documentation
-* `tests` - Test code
+Run the build, play, and test commands above from that shell.
